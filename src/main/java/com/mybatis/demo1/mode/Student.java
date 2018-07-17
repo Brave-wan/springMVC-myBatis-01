@@ -1,7 +1,7 @@
 package com.mybatis.demo1.mode;
 
 public class Student {
-    private byte[] uid;
+    private String uid;
 
     private String name;
 
@@ -9,11 +9,11 @@ public class Student {
 
     private Integer classid;
 
-    public byte[] getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(byte[] uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 

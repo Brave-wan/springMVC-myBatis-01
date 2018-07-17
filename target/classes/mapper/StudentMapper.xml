@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Dao.StudentMapper">
+<mapper namespace="com.mybatis.demo1.dao.StudentMapper">
     <resultMap id="BaseResultMap" type="com.mybatis.demo1.mode.Student">
-        <id column="Uid" jdbcType="BINARY" property="uid" />
-        <result column="Name" jdbcType="VARCHAR" property="name" />
-        <result column="Age" jdbcType="INTEGER" property="age" />
-        <result column="ClassId" jdbcType="INTEGER" property="classid" />
+        <id column="Uid" jdbcType="VARCHAR" property="uid"/>
+        <result column="Name" jdbcType="VARCHAR" property="name"/>
+        <result column="Age" jdbcType="INTEGER" property="age"/>
+        <result column="ClassId" jdbcType="INTEGER" property="classid"/>
     </resultMap>
     <sql id="Base_Column_List">
         Uid, Name, Age, ClassId
     </sql>
     <select id="selectByPrimaryKey" parameterType="byte[]" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         from student
-        where Uid = #{uid,jdbcType=BINARY}
+        where Uid = #{uid,jdbcType=VARCHAR}
     </select>
 
     <select id="selectByCondition" parameterType="com.mybatis.demo1.mode.Student" resultMap="BaseResultMap">
@@ -24,7 +24,7 @@
         <where>
             1=1
             <if test="uid != null">
-                and Uid=#{uid,jdbcType=BINARY}
+                and Uid=#{uid,jdbcType=VARCHAR}
             </if>
             <if test="name != null">
                 and Name=#{name,jdbcType=VARCHAR}
@@ -39,12 +39,12 @@
     </select>
     <delete id="deleteByPrimaryKey" parameterType="byte[]">
         delete from student
-        where Uid = #{uid,jdbcType=BINARY}
+        where Uid = #{uid,jdbcType=VARCHAR}
     </delete>
     <insert id="insert" parameterType="com.mybatis.demo1.mode.Student">
         insert into student (Uid, Name, Age,
         ClassId)
-        values (#{uid,jdbcType=BINARY}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
+        values (#{uid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
         #{classid,jdbcType=INTEGER})
     </insert>
     <insert id="insertSelective" parameterType="com.mybatis.demo1.mode.Student">
@@ -65,7 +65,7 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="uid != null">
-                #{uid,jdbcType=BINARY},
+                #{uid,jdbcType=VARCHAR},
             </if>
             <if test="name != null">
                 #{name,jdbcType=VARCHAR},
@@ -91,13 +91,13 @@
                 ClassId = #{classid,jdbcType=INTEGER},
             </if>
         </set>
-        where Uid = #{uid,jdbcType=BINARY}
+        where Uid = #{uid,jdbcType=VARCHAR}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.mybatis.demo1.mode.Student">
         update student
         set Name = #{name,jdbcType=VARCHAR},
         Age = #{age,jdbcType=INTEGER},
         ClassId = #{classid,jdbcType=INTEGER}
-        where Uid = #{uid,jdbcType=BINARY}
+        where Uid = #{uid,jdbcType=VARCHAR}
     </update>
 </mapper>

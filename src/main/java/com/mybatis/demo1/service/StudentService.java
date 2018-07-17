@@ -15,7 +15,7 @@ public class StudentService implements IStudentService {
     private StudentMapper studentMapper;
 
     @Override
-    public int deleteByPrimaryKey(byte[] uid) {
+    public int deleteByPrimaryKey(String uid) {
         return studentMapper.deleteByPrimaryKey(uid);
     }
 
@@ -30,7 +30,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public Student selectByPrimaryKey(byte[] uid) {
+    public Student selectByPrimaryKey(String uid) {
         return studentMapper.selectByPrimaryKey(uid);
     }
 

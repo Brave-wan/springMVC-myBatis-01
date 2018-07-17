@@ -5,13 +5,13 @@ import com.mybatis.demo1.mode.Student;
 import java.util.List;
 
 public interface IStudentService {
-    int deleteByPrimaryKey(byte[] uid);
+    int deleteByPrimaryKey(String uid);
 
     int insert(Student record);
 
     int insertSelective(Student record);
 
-    Student selectByPrimaryKey(byte[] uid);
+    Student selectByPrimaryKey(String uid);
 
     List<Student> selectByCondition(Student record);
 
